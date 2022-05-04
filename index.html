@@ -1,28 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incorporar Array</title>
-</head>
-<body> 
-    <h1>Listas de Tareas</h1>
-    <main>
-        <section>
-            <h3>Lista de Tareas</h3>
-            <ul id="tareasIncompletas"></ul>
-        </section>
-        <section> 
-            <h3>Lista de Tareas Completas</h3>
-            <ul id="tareasCompletas"></ul>
-        </section>
-        <section>
-            <h3>Lista de Tareas Eliminadas</h3>
-            <ul id="tareasEliminadas"></ul>
-        </section>
-    </main>
+    <title>ListList</title>
     
-    <script src="main.js"></script>
+</head>
+<body>
+    <header >
+        <article class="logo">
+            <span class="blanco">List-</span><span class="negro">List</span>
+            
+        </article>
+        
+        <article class="cestoBasura" hidden>
+            <img src="assets/iconoTareaEliminadas-white.svg" alt="tareasEliminadas" >
+            <div class="totalTareasEliminadas" hidden>0</div>
+        </article>
+    </header>
+
+    <main>
+        <h2 class="text "> 
+            Tareas
+        </h2>
+
+        <form id="formulario">
+            <input type="text" placeholder="Ingrese su Tarea" class="ingresoTarea">
+            <input type="submit" value="agregar" class="btn">
+        </form>
+        
+
+        <section>
+            <ul id="listaIncompleta">
+
+            </ul>
+        </section>
+
+    </main>
+    <aside>
+        <h2 class="text">Tareas Completas</h2>
+        <ul id="listaCompleta">
+           
+         </ul>
+    </aside>
+
+<template id="template">
+  <li class="tareaIncompleta">
+        <span class="text"></span>
+        <div class="contenedorOpciones">
+            <input type="text" class="noMostrar">
+            <button class="aceptarEdicion noMostrar btn btnEditar"> OK</button>
+            <button class="cancelarEdicion noMostrar btn btnEditar">Cancel</button>
+        </div>
+        <div>
+            <img src="assets/iconoTareaCompleta.svg" alt="" class="completa" title="Completar Tarea">
+            <img src="assets/iconoDesmarcar.svg" alt="" class="desMarcar" title="Desmarcar como Completa Tarea">
+            <img src="assets/iconoEliminarTarea.svg" alt="" class="eliminar" title="Eliminar La Tarea">
+            <img src="assets/iconoDeshacer.svg" alt="" class="recuperar" title="Deshacer eliminacion">
+            <img src="assets/iconoTareaEliminadas-black.svg" alt="" class="descartar" title="Eliminar Definitivamente Tarea">
+            <img src="assets/iconoEditar.svg" alt="" class="editar" title="Completar Tarea">
+        </div>
+  </li> 
+</template>
+
+    <footer>
+        <article class="encabezadoFooter">
+            <p class="tituloFooter">Puedes Seguirme</p>
+            <div class="iconoFooterContenedor">
+                <a href="https://www.instagram.com/" target="_blank"><img src="assets/icons/icono_instagram.svg" alt="logo instagram" class="iconoFooter"></a>
+                <a href="https://www.facebook.com/" target="_blank"><img src="assets/icons/icono_facebook.svg" alt="logo facebook" class="iconoFooter"></a>
+                <a href="https://github.com/ramoamatias" target="_blank"><img src="assets/icons/iconoGitHub.svg" alt="logo github" class="iconoFooter"></a>
+                <a href="https://www.youtube.com/" target="_blank"> <img src="assets/icons/icono_youtube.svg" alt="logo youtube" class="iconoFooter"></a>
+            </div>
+        </article>
+
+        <p class="copyrightFooter">Copyright © Matias Ramoa 2022 - Todos los derechos</p>
+    </footer>
+
+
+
+
+    <div class="modal noMostrar">
+        <div class="container-modal">
+            <div class="modal-header">
+                <h2 class="text">Tareas Eliminadas</h2>
+                <img src="assets/cancelCuadrado.svg" alt="">
+            </div>
+
+            <ul id="listaEliminadas">
+
+            </ul>
+        </div>
+
+    </div>
+    <script src="js/main.js"></script>
 </body>
 </html>
+
+
+

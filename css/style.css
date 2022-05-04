@@ -1,0 +1,322 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-image:   url("../assets/FondoEstrellas.webp");
+
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-auto-flow: row dense;
+    grid-template-areas: "header header"
+                         "main   aside"
+                         "main   aside"
+                         "main   aside"
+                         "footer footer"   ;
+}
+
+img {
+    width: 20px;
+}
+
+li {
+    width: 80%;
+    /* max-width: 800px; */
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    list-style: none;
+}
+
+
+.tareaIncompleta {
+    background-color:#00b8ffd9;
+}
+
+.tareaCompleta {
+    
+    /* background-color:#0cff40ab; */
+    background-color:#2cf380ab;
+}
+
+.tareaEliminada {
+    
+    background-color: rgba(194, 201, 59, 0.863);
+}
+/* p {
+    display: inline-block;
+    width: 100px;
+    overflow: auto;
+} */
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+} 
+ul li div {
+    display: flex;
+    align-items: flex-end;
+}
+/* .eliminar {
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+.eliminar img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: ;
+} */
+  
+.cestoBasura {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    transition: all 1s ease;
+}
+
+.cestoBasura img {
+    width: 35px;
+}
+
+.totalTareasEliminadas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    top: 12px;
+    right: -7px;
+    font-weight: bold;
+    color: white;
+    padding: 2px;
+    border-radius: 50%;
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    grid-area: header;
+    background-color: #9f0d86;
+    height: 40px;
+}
+
+main {
+    grid-area: main;
+    height: 80vh;
+    margin: 5px;
+    border-radius: 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 3px 3px 15px black;
+    backdrop-filter: blur(5px);
+    padding: 10px;
+}
+
+form {
+    margin: 10px auto;
+}
+
+aside {
+    grid-area: aside;
+    /* background-color: burlywood; */
+    margin: 5px;
+    box-shadow: 3px 3px 15px black;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    padding: 10px;
+    height: 80vh;
+    overflow: auto;
+    
+}
+
+footer {
+    grid-area: footer;
+    background-color: #9f0d86;
+    height: calc(20vh - 50px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.encabezadoFooter {
+    align-self: center;
+}
+
+.tituloFooter {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 5px;
+    font-family: sans-serif;
+}
+
+.iconoFooterContenedor {
+    display: flex;
+    justify-content: space-around;
+}
+
+.copyrightFooter {
+    font-size: 10px;
+    margin-left: 10px;
+    color: #ffffff;
+    font-family: sans-serif;
+}
+.text {
+    font-family: cursive;
+}
+
+.logo{
+    font-family: cursive;
+    font-weight: bolder;
+    padding: 8px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.blanco {
+    color: white;
+    text-shadow: 3px 3px black;
+}
+
+.negro {
+    color: black;
+    text-shadow: 1px 1px white;
+}
+
+.btn{
+    padding: 7px;
+    border-radius: 8px;
+    border: 2px solid white;
+    background-color: #f077dc;
+    color: white;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #f077dc;
+    border: 2px solid #f077dc;
+}
+
+
+.ingresoTarea {
+    padding: 7px;
+    border-radius: 8px;
+    border: 2px solid #f077dc;
+    text-align: center;
+    font-weight: bold;
+    color: #f077dc;
+}
+
+.ingresoTarea:focus-visible {
+    outline: none;
+}
+
+.contenedorOpciones input {
+    padding: 8px;
+    font-weight: bold;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0px 2px 0px #ffffff8a;
+    margin-right: 10px;
+}
+
+.contenedorOpciones input:focus-visible {
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #ffffff8a, -1px -1px 5px #ffffff8a;
+}
+
+.btnEditar {
+    background-color: #ffffff8a;
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btnEditar:hover {
+    background-color: #26c3ff;
+    color: white;
+    border: 2px solid #ffffff8a;
+}
+
+.btnEditar:focus-visible {
+    outline: none;
+}
+
+h2 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid black;
+    text-shadow: 2px 2px 5px  #9f0d86;
+}
+
+
+
+.modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: brightness(0.3);   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-modal {
+    width: 60vw;
+    height:80vh;
+    background-color: rgba(255, 255, 255, 0.917);
+    border-radius: 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    backdrop-filter: blur(0.5);
+    padding: 10px;
+}
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid black;
+}
+
+.modal-header h2 {
+    border: none;
+}
+.modal-header img {
+    width: 30px;
+}
+
+.noMostrar{
+    display: none;
+}
