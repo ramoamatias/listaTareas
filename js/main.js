@@ -5,7 +5,7 @@ import {editarTareaIncompletaDOM} from "./editarTareaIncompleta.js";
 import {marcarComoEliminadaTareaDOM} from "./marcarComoEliminadaTarea.js";
 import {recuperarTareaEliminadaDOM} from "./recuperarTareaEliminada.js";
 import {eliminarDefinitivamenteTareaDOM} from "./eliminarDefinitivamenteTarea.js";
-
+import {buscarTarea, eliminarTarea} from "./funciones.js";
 
 const $templateTareaIncompleta = document.getElementById("template").content,
     $listaIncompleta = document.getElementById("listaIncompleta"),
@@ -148,7 +148,21 @@ $cestoBasura.addEventListener("click",(e)=>{
     });
    
     $modal.querySelector(".eliminarTodo").addEventListener("click",(e)=> {
-        alert("btn eliminar todo");
+        
+        while ($listaEliminadas.firstChild) {
+            $listaEliminadas.removeChild($listaEliminadas.firstChild);
+        }
+
+        localStorage.setItem("cantidadTareasEliminadas",0);
+        $contadorTareasEliminadas.setAttribute("hidden",true);
+        document.querySelector(".cestoBasura").setAttribute("hidden",true);
+
+        let eliminadas = tareas.filter(el => el.getEstado() === "eliminada");
+        eliminadas.forEach(elemento => {
+           eliminarTarea(elemento.getId(),tareas);
+        });
+        
+        localStorage.setItem("tareas",JSON.stringify(tareas));
     });
 
  $listaEliminadas.appendChild($fragment);
