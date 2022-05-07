@@ -1,0 +1,40 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-area: footer;
+    background-color: #9f0d86;
+    height: calc(20vh - 50px);
+}
+
+.encabezadoFooter {
+    align-self: center;
+}
+
+.tituloFooter {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 5px;
+    font-family: sans-serif;
+}
+
+.iconoFooterContenedor {
+    display: flex;
+    justify-content: space-around;
+
+    a {
+        transition: all .5s;
+
+        &:hover {
+            transform: scale(1.5,1.5);        
+        }
+    }
+}
+
+.copyrightFooter {
+    font-size: 10px;
+    margin-left: 10px;
+    color: #ffffff;
+    font-family: sans-serif;
+}
+

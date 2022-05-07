@@ -1,0 +1,21 @@
+aside {
+    grid-area: aside;
+    margin: 5px;
+    box-shadow: 3px 3px 15px black;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    padding: 10px;
+    height: 80vh;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+            
+    &::-webkit-scrollbar-thumb {
+        background-color: #2cf380ab;
+        border-radius: 100px;
+        border: 1px solid #2cf380ab; 
+    }
+    
+}

@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    grid-template-columns: 60% 40%;
+    grid-auto-flow: row dense;
+    grid-template-areas: "header header"
+    "main   aside"
+    "main   aside"
+    "main   aside"
+    "footer footer"   ;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-image:   url("../assets/FondoEstrellas.webp");    display: grid;
+}
+
+img {
+    width: 20px;
+}
+
+h2 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid black;
+    text-shadow: 2px 2px 5px  #9f0d86;
+}
+
+.noMostrar{
+    display: none;
+}
