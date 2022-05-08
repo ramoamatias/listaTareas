@@ -4,7 +4,9 @@ header {
     grid-area: header;
     background-color: #9f0d86;
     height: 40px;
-    z-index: 0;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 
   }
 

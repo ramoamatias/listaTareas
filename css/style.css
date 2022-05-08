@@ -6,6 +6,7 @@
   height: 100vh;
   backdrop-filter: brightness(0.3);
   padding: 10px;
+  z-index: 100;
 }
 
 .container-modal {
@@ -199,7 +200,9 @@ header {
   grid-area: header;
   background-color: #9f0d86;
   height: 40px;
-  z-index: 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .cestoBasura {
