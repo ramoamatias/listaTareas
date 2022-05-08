@@ -4,30 +4,57 @@
     box-sizing: border-box;
 }
 
+
 body{
-    grid-template-columns: 60% 40%;
-    grid-auto-flow: row dense;
-    grid-template-areas: "header header"
-    "main   aside"
-    "main   aside"
-    "main   aside"
-    "footer footer"   ;
+    display: flex;
+    flex-direction: column;
     background-repeat: no-repeat;
     background-size: cover; 
-    background-image:   url("../assets/FondoEstrellas.webp");    display: grid;
+    background-image:   url("../assets/FondoEstrellas.webp");    
 }
 
 img {
-    width: 20px;
+    width: 30px;
+    margin-left: 5px;
+    transition: all .5s ease;
+
+    &:hover{
+        transform: scale(1.5);
+    }
 }
 
-h2 {
+h2.text {
     padding-bottom: 5px;
     border-bottom: 2px solid black;
     text-shadow: 2px 2px 5px  #9f0d86;
+    font-size: 1.5rem;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 700;
 }
 
 .noMostrar{
     display: none;
 }
 
+
+    @media screen and (min-width:700px) {
+        body {
+            display: grid;
+            grid-template-columns: 60% 40%;
+            grid-auto-flow: row dense;
+            grid-template-areas: "header header"
+            "main   aside"
+            "main   aside"
+            "main   aside"
+            "footer footer"   ;
+        }
+
+        h2.text {
+            font-size: 1.5rem;
+        }
+
+        img {
+            width: 20px;
+        }
+        
+    }

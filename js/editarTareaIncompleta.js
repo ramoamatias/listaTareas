@@ -7,10 +7,12 @@ export const editarTareaIncompletaDOM = (e,tareas) => {
             $texto = $liARecuperar.querySelector(".text"),
             textAEditar = $texto.innerText,
             $contenedorOpciones = $liARecuperar.querySelector(".contenedorOpciones"),
-            $inputEditor = $contenedorOpciones.children[0],
-            $btnOk = $contenedorOpciones.children[1],
-            $btnCancel = $contenedorOpciones.children[2];;
-    
+            $inputEditor = $contenedorOpciones.querySelector("[type='text']"),
+            $btnOk = $contenedorOpciones.querySelector(".aceptarEdicion "),
+            $btnCancel = $contenedorOpciones.querySelector(".cancelarEdicion");
+
+        $contenedorOpciones.classList.remove("noMostrar");
+
         $liARecuperar.querySelector(".completa").classList.add("noMostrar");
         $liARecuperar.querySelector(".desMarcar").classList.add("noMostrar");
         $liARecuperar.querySelector(".eliminar").classList.add("noMostrar");

@@ -7,16 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ListList</title>
 
-    <style>
-        /* From uiverse.io by @hannahyockel */
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&display=swap" rel="stylesheet">
 
-    </style>
+    <link rel="shortcut icon" href="assets/icons/Logo-ListList.ico" type="image/x-icon">
 </head>
 <body>
     <header >
         <article class="logo">
             <span class="blanco">List-</span><span class="negro">List</span>
-            
         </article>
         
         <article class="cestoBasura" hidden>
@@ -51,14 +51,16 @@
     </aside>
 
 <template id="template">
-  <li class="tareaIncompleta">
+  <li class="tareaIncompleta ">
         <span class="text"></span>
-        <div class="contenedorOpciones">
+        <div class="contenedorOpciones noMostrar">
             <input type="text" class="noMostrar">
-            <button class="aceptarEdicion noMostrar btn btnEditar"> OK</button>
-            <button class="cancelarEdicion noMostrar btn btnEditar">Cancel</button>
+            <div class="contenedorBtn">
+                <button class="aceptarEdicion noMostrar btn btnEditar"> OK</button>
+                <button class="cancelarEdicion noMostrar btn btnEditar">Cancel</button>
+            </div>
         </div>
-        <div>
+        <div class="contenedorEdicionTareas">
             <img src="assets/iconoTareaCompleta.svg" alt="" class="completa" title="Completar Tarea">
             <img src="assets/iconoDesmarcar.svg" alt="" class="desMarcar" title="Desmarcar como Completa Tarea">
             <img src="assets/iconoEliminarTarea.svg" alt="" class="eliminar" title="Eliminar La Tarea">
