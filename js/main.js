@@ -1,11 +1,5 @@
 import {Tarea} from "./tarea.js";
-import {marcarTareaComoCompletaDOM} from "./completarTarea.js";
-import {marcarTareaComoIncompletaDOM} from "./desmarcarTareaCompleta.js";
-import {editarTareaIncompletaDOM} from "./editarTareaIncompleta.js";
-import {marcarComoEliminadaTareaDOM} from "./marcarComoEliminadaTarea.js";
-import {recuperarTareaEliminadaDOM} from "./recuperarTareaEliminada.js";
-import {eliminarDefinitivamenteTareaDOM} from "./eliminarDefinitivamenteTarea.js";
-import {buscarTarea, eliminarTarea} from "./funciones.js";
+import {marcarTareaComoCompletaDOM,marcarTareaComoIncompletaDOM,editarTareaIncompletaDOM,marcarComoEliminadaTareaDOM,recuperarTareaEliminadaDOM,eliminarDefinitivamenteTareaDOM,eliminarTarea} from "./funciones.js";
 
 const $templateTareaIncompleta = document.getElementById("template").content,
     $listaIncompleta = document.getElementById("listaIncompleta"),
@@ -99,7 +93,6 @@ $cestoBasura.addEventListener("click",(e)=>{
         $listaEliminadas.removeChild($listaEliminadas.firstChild);
     }
 
-
     tareasEliminadas.forEach(el =>{
         let id = el.getId();
         $li = document.importNode($templateTareaIncompleta,true); //Creamos un elemnto Li para renderizar.
@@ -183,15 +176,13 @@ window.addEventListener('load', () => {
     let storage = localStorage;
     identificador = storage.getItem("identificador");
     
-    if ( identificador ===null) { //no existe la clave por lo tanto la creamos.
-        storage.setItem("identificador",1);
-    }
+    identificador ===null && storage.setItem("identificador",1);
+    
     identificador = parseInt(storage.getItem("identificador"));
     
     cantidadTareasEliminadas  = storage.getItem("cantidadTareasEliminadas");
-    if ( cantidadTareasEliminadas ===null) { //no existe la clave por lo tanto la creamos.
-        storage.setItem("cantidadTareasEliminadas",0);
-    }
+
+    cantidadTareasEliminadas ===null && storage.setItem("cantidadTareasEliminadas",0);
 
     cantidadTareasEliminadas = parseInt(storage.getItem("cantidadTareasEliminadas"));
 
@@ -211,7 +202,7 @@ window.addEventListener('load', () => {
 
         tareas.forEach((el) => {
             let id = el.getId();
-            $templateTareaIncompleta.querySelector("li").setAttribute("id",id);
+                $templateTareaIncompleta.querySelector("li").setAttribute("id",id);
                 
                 $templateTareaIncompleta.querySelector(".text").innerText = el.getTarea();
                 $li = document.importNode($templateTareaIncompleta,true); //tengo el elemento li
@@ -292,11 +283,11 @@ window.addEventListener('load', () => {
     }else if(cantidadTareasEliminadas<9) {
         $contadorTareasEliminadas.innerText = cantidadTareasEliminadas;
     }
-    if (cantidadTareasEliminadas >= 9) {
-        $contadorTareasEliminadas.innerHTML = `9+`;
-    } else {
-        $contadorTareasEliminadas.innerText = cantidadTareasEliminadas;
-    }
+
+    (cantidadTareasEliminadas >= 9)
+        ? $contadorTareasEliminadas.innerHTML = `9+`
+        : $contadorTareasEliminadas.innerText = cantidadTareasEliminadas;
+    
     if (cantidadTareasEliminadas > 0) {
         $contadorTareasEliminadas.removeAttribute("hidden");
         document.querySelector(".cestoBasura").removeAttribute("hidden");
