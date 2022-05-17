@@ -61,7 +61,25 @@ $formulario.addEventListener("submit",(e)=>{
     $btnEliminar.addEventListener("click", (e) => {
         cantidadTareasEliminadas = parseInt(localStorage.getItem("cantidadTareasEliminadas")) + 1 ;
         marcarComoEliminadaTareaDOM(e,tareas,cantidadTareasEliminadas,$contadorTareasEliminadas);
-        localStorage.setItem("cantidadTareasEliminadas",cantidadTareasEliminadas);  
+        localStorage.setItem("cantidadTareasEliminadas",cantidadTareasEliminadas); 
+        Toastify({
+            text: "Tarea Eliminada",
+            duration: 1500,
+            // destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: false,
+            gravity: "bottom", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: false, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, rgba(0, 184, 255, 0.8509803922), #f077dc)",
+                borderRadius: "25px",
+                transform: "translate(-100%,0%)",
+                fontWeight: "bold",
+                fontFamily: "cursive"
+            }
+            
+        }).showToast(); 
     });
 
 
@@ -142,20 +160,62 @@ $cestoBasura.addEventListener("click",(e)=>{
    
     $modal.querySelector(".eliminarTodo").addEventListener("click",(e)=> {
         
-        while ($listaEliminadas.firstChild) {
-            $listaEliminadas.removeChild($listaEliminadas.firstChild);
-        }
-
-        localStorage.setItem("cantidadTareasEliminadas",0);
-        $contadorTareasEliminadas.setAttribute("hidden",true);
-        document.querySelector(".cestoBasura").setAttribute("hidden",true);
-
-        let eliminadas = tareas.filter(el => el.getEstado() === "eliminada");
-        eliminadas.forEach(elemento => {
-           eliminarTarea(elemento.getId(),tareas);
-        });
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: true
+        })
         
-        localStorage.setItem("tareas",JSON.stringify(tareas));
+        swalWithBootstrapButtons.fire({
+            title: 'Seguro que desea eliminar todas las Tareas?',
+            text: "No podras revertir este proceso!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si, borralo !',
+            cancelButtonText: 'No, cancelar !',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Papelera de Tareas Vaciada!',
+                    'Todas sus tareas fueron eliminadas',
+                    'success'
+                )
+
+                while ($listaEliminadas.firstChild) {
+                    $listaEliminadas.removeChild($listaEliminadas.firstChild);
+                }
+        
+                localStorage.setItem("cantidadTareasEliminadas",0);
+                $contadorTareasEliminadas.setAttribute("hidden",true);
+                document.querySelector(".cestoBasura").setAttribute("hidden",true);
+        
+                let eliminadas = tareas.filter(el => el.getEstado() === "eliminada");
+                eliminadas.forEach(elemento => {
+                   eliminarTarea(elemento.getId(),tareas);
+                });
+                
+                localStorage.setItem("tareas",JSON.stringify(tareas));
+
+
+
+
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelado',
+                    'No se eliminará ninguna Tarea :)',
+                    'error'
+                )
+            }
+        })
+
+
     });
 
  $listaEliminadas.appendChild($fragment);
