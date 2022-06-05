@@ -134,7 +134,7 @@ $cestoBasura.addEventListener("click",(e)=>{
             
             $li.querySelector("li").classList.add("tareaEliminada"); 
             
-            
+            $li.querySelector("li").style.backgroundColor = el.getColor();
             //Recuperamos una Tarea de la Papelera.
             let $btnRecuperar = $li.querySelector(".recuperar");
             $btnRecuperar.classList.remove("noMostrar");
@@ -257,6 +257,7 @@ window.addEventListener('load', () => {
             tarea.setFechaCompletado(el.fechaCompletado);
             tarea.fechaCreacion = el.fechaCreacion;
             tarea.fechaEliminada = el.fechaEliminada;
+            tarea.setColor(el.color);
             tareas.push(tarea);
         });
 
@@ -266,7 +267,8 @@ window.addEventListener('load', () => {
                 
                 $templateTareaIncompleta.querySelector(".text").innerText = el.getTarea();
                 $li = document.importNode($templateTareaIncompleta,true); //tengo el elemento li
-               
+                
+                console.dir($li.querySelector(`li`));
                 
                 let $btnCompleta = $li.querySelector(".completa");
                 $btnCompleta.setAttribute("data-id",id);
@@ -304,8 +306,7 @@ window.addEventListener('load', () => {
                     editarTareaIncompletaDOM(e,tareas);
                 });
 
-
-
+                
                 //Como debemos de cargar las tareas que existian en el localStorage debemos de saber el estado que tenia.
                 //Ya que debemos de pintar las incompletas y completas segun corresponda.
                 if (el.getEstado() === "incompleta" ) {
@@ -317,6 +318,7 @@ window.addEventListener('load', () => {
                     $li.querySelector(".editar").classList.remove("noMostrar");
                     $li.querySelector("li").classList.add("tareaIncompleta");
                     $li.querySelector("li").classList.remove("tareaCompleta");
+                    $li.querySelector("li").style.backgroundColor = el.getColor();
                     $listaIncompleta.appendChild($li);
                 }else if (el.getEstado() === "completa") {
                     $li.querySelector(".completa").classList.add("noMostrar");
@@ -327,9 +329,9 @@ window.addEventListener('load', () => {
                     $li.querySelector(".editar").classList.add("noMostrar");
                     $li.querySelector("li").classList.remove("tareaIncompleta");
                     $li.querySelector("li").classList.add("tareaCompleta");
+                    $li.querySelector("li").style.backgroundColor = el.getColor();
                     $listaCompleta.appendChild($li);
                 }
-                
                 
         });
     }

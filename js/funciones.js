@@ -112,13 +112,15 @@ export const marcarTareaComoIncompletaDOM = (e,$listaIncompleta,tareas) => {
 
 export const editarTareaIncompletaDOM = (e,tareas) => {           
     let identificadorTarea = e.target.getAttribute("data-id"),
+            tarea = buscarTarea(identificadorTarea,tareas),
             $liARecuperar = document.getElementById(identificadorTarea),
             $texto = $liARecuperar.querySelector(".text"),
             textAEditar = $texto.innerText,
             $contenedorOpciones = $liARecuperar.querySelector(".contenedorOpciones"),
             $inputEditor = $contenedorOpciones.querySelector("[type='text']"),
             $btnOk = $contenedorOpciones.querySelector(".aceptarEdicion "),
-            $btnCancel = $contenedorOpciones.querySelector(".cancelarEdicion");
+            $btnCancel = $contenedorOpciones.querySelector(".cancelarEdicion"),
+            colorTarea;
 
         $contenedorOpciones.classList.remove("noMostrar");
 
@@ -137,6 +139,13 @@ export const editarTareaIncompletaDOM = (e,tareas) => {
         $btnOk.classList.remove("noMostrar") ;
         $btnCancel.removeAttribute("hidden");
         $btnCancel.classList.remove("noMostrar");
+        
+        let $colorBackgraund = $contenedorOpciones.querySelector("#colorTarea");
+        $colorBackgraund.addEventListener("input", (e) => {
+            colorTarea = e.target.value;
+            $liARecuperar.style.backgroundColor = colorTarea;
+        });
+
 
 
         $btnOk.addEventListener("click",()=>{
@@ -159,6 +168,7 @@ export const editarTareaIncompletaDOM = (e,tareas) => {
             $texto.classList.remove("noMostrar");
             
             $contenedorOpciones.classList.add("noMostrar");
+            tarea.setColor(colorTarea);
             localStorage.setItem("tareas",JSON.stringify(tareas));
         });
 
@@ -174,6 +184,7 @@ export const editarTareaIncompletaDOM = (e,tareas) => {
             $btnCancel.classList.add("noMostrar");
             $texto.classList.remove("noMostrar");
             $contenedorOpciones.classList.add("noMostrar");
+            $liARecuperar.style.backgroundColor = tarea.getColor();
         });
 }
 

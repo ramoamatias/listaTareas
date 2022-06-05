@@ -15,6 +15,7 @@ ul {
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
+    color: white;
     
     li {
         display: flex;
@@ -31,7 +32,7 @@ ul {
 
         div {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
         }
     }
 }
@@ -93,7 +94,14 @@ ul {
     }
 }
 
-
+#colorTarea {
+    padding: 0;
+    margin: 0 5px 0 0 ;
+    width: 32px;
+    height: 32px;
+    background: #ffffffc2;
+    border-radius: 6px;
+}
 
 @media screen and (min-width:700px) {
     .text {

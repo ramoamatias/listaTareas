@@ -338,6 +338,7 @@ ul {
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
+  color: white;
 }
 ul li {
   display: flex;
@@ -354,7 +355,7 @@ ul li {
 }
 ul li div {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .contenedorEdicionTareas {
@@ -410,6 +411,15 @@ ul li div {
 }
 .btnEditar:focus-visible {
   outline: none;
+}
+
+#colorTarea {
+  padding: 0;
+  margin: 0 5px 0 0;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.7607843137);
+  border-radius: 6px;
 }
 
 @media screen and (min-width: 700px) {

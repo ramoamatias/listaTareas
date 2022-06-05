@@ -8,6 +8,7 @@ export class Tarea {
         this.fechaCreacion = new Date();
         this.fechaEliminada = null;
         this.fechaCompletado = null;
+        this.color = "#00b8ffd9";
     }
 
     getId() {
@@ -80,5 +81,13 @@ export class Tarea {
         this.setEstadoAnterior(this.getEstado());
         this.setEstado("incompleta");
         this.setFechaEliminada(null);
+    }
+
+    getColor () {
+        return this.color;
+    }
+    
+    setColor(nuevoColor) {
+        this.color = nuevoColor;
     }
 }
